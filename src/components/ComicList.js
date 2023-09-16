@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
 import { Link } from "react-router-dom";
+import ComicSearch from "./ComicSearch";
 
 const publicKey = "c352f162878d0cc68c68e12e57d22ac0";
 const privateKey = "9a850fe5e1d3911eb1c1cd3f4064d3216546c3fe";
@@ -42,6 +43,7 @@ function ComicList() {
 
   return (
     <div>
+        <ComicSearch/>
       <h1>Comic List</h1>
       {comics.map((comic) => (
         <div key={comic.id}>
