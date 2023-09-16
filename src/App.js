@@ -1,11 +1,15 @@
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ComicList from "./components/ComicList";
 
 function App() {
   return (
-    <div className="App">
-      
-      HELLOW WORLD
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<ComicList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
