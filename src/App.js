@@ -7,7 +7,7 @@ function App() {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<ComicList />} />
+          <Route path="/comics" element={<ComicList />} />
           <Route exact path="/comics/:comicId" element={<ComicDetail/>}/>
         </Routes>
       </div>
