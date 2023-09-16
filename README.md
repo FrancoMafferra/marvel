@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Documentación del Proyecto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introducción
+Este proyecto es una aplicación web que muestra una lista de cómics de Marvel y permite ver los detalles de cada cómic. Utiliza la API de Marvel para obtener los datos de los cómics.
 
-## Available Scripts
+## Configuración de Redux
+La configuración de Redux se encuentra en la carpeta `redux`. A continuación se detallan los archivos relevantes:
 
-In the project directory, you can run:
+- `store.js`: Configura el store de Redux utilizando `createStore` y `applyMiddleware`. Se utiliza el middleware `thunk` para permitir acciones asíncronas.
 
-### `npm start`
+- `reducers.js`: Combina los reducers individuales en un reducer raíz utilizando `combineReducers`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Componentes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ComicList
+El componente `ComicList` muestra una lista paginada de cómics. Utiliza Redux para obtener los cómics desde el estado global.
 
-### `npm test`
+- `fetchComics`: Acción que se dispara al cargar el componente para obtener los cómics desde la API de Marvel.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `nextPage` y `prevPage`: Acciones que se disparan al hacer clic en los botones de navegación de página.
 
-### `npm run build`
+### ComicDetail
+El componente `ComicDetail` muestra los detalles de un cómic específico. Utiliza Redux para obtener el cómic seleccionado desde el estado global.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `fetchComic`: Acción que se dispara al cargar el componente para obtener los detalles del cómic seleccionado desde la API de Marvel.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ComicSearch
+El componente `ComicSearch` permite buscar cómics por título. Utiliza Redux para almacenar los resultados de búsqueda.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `searchComics`: Acción que se dispara al ingresar un término de búsqueda para obtener los cómics relacionados desde la API de Marvel.
 
-### `npm run eject`
+## Acciones y Reducers
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Acciones
+- `fetchComics`: Obtiene los cómics desde la API de Marvel y actualiza el estado con los datos obtenidos.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `nextPage` y `prevPage`: Actualizan el estado con el número de página actual para la paginación.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `fetchComic`: Obtiene los detalles de un cómic específico desde la API de Marvel y actualiza el estado con los datos obtenidos.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `searchComics`: Realiza una búsqueda de cómics por título y actualiza el estado con los resultados obtenidos.
 
-## Learn More
+### Reducers
+- `comicReducer`: Maneja el estado relacionado con los cómics. Actualiza el estado con los cómics obtenidos, el cómic seleccionado, los resultados de búsqueda y el número de página actual.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## API y Llamadas a Servicios
+La aplicación utiliza la API de Marvel para obtener los datos de los cómics. Se realizan llamadas a la API utilizando la librería `axios` y se utiliza el hash MD5 para autenticación.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Instalación y Ejecución
+1. Clona el repositorio desde [URL del repositorio].
+2. Instala las dependencias ejecutando `npm install`.
+3. Crea un archivo `.env` en la raíz del proyecto y define las claves de acceso a la API de Marvel.
+4. Ejecuta la aplicación utilizando `npm start`.
 
-### Code Splitting
+## Dependencias
+- `react`: [^18.2.0]
+- `react-redux`: [^8.1.2]
+- `redux`: [^4.2.1]
+- `axios`: [^1.5.0]
+- `crypto-js`: [^4.1.1]
+- `react-router-dom`: [^6.16.0]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Consideraciones adicionales
+- Asegúrate de tener una conexión a Internet activa para poder obtener los datos de los cómics desde la API de Marvel.
+- La paginación de la lista de cómics se realiza de a [5] cómics por página.
+- La búsqueda de cómics se realiza a partir de [1] caracteres ingresados en el campo de búsqueda.
