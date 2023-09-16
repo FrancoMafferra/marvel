@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
+import { Link } from "react-router-dom";
 
 const publicKey = "c352f162878d0cc68c68e12e57d22ac0";
 const privateKey = "9a850fe5e1d3911eb1c1cd3f4064d3216546c3fe";
@@ -31,10 +32,12 @@ function ComicList() {
 
   const nextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const prevPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -43,10 +46,12 @@ function ComicList() {
       {comics.map((comic) => (
         <div key={comic.id}>
           <h2>{comic.title}</h2>
-          <img
-            src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-            alt={comic.title}
-          />
+          <Link to={`/comics/${comic.id}`}>
+            <img
+              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+              alt={comic.title}
+            />
+          </Link>
           <p>{comic.description}</p>
         </div>
       ))}
