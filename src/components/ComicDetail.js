@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
 import { useParams, Link } from "react-router-dom";
@@ -27,6 +27,50 @@ function ComicDetail() {
 
   if (!comic) {
     return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <Link to="/comics">Volver atrás</Link>
+      <h1>{comic.title}</h1>
+      <img
+        src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+        alt={comic.title}
+      />
+      <p>{comic.description}</p>
+      <h2>Characters:</h2>
+      <ul>
+        {comic.characters.items.map((character) => (
+          <li key={character.name}>{character.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default ComicDetail;*/
+
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, Link } from "react-router-dom";
+import { fetchComic } from "../redux/actions/comicActions";
+
+function ComicDetail() {
+  const { comicId } = useParams();
+  const comic = useSelector((state) => state.comic.comic);
+  const loading = useSelector((state) => state.comic.loading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchComic(comicId));
+  }, [comicId, dispatch]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!comic) {
+    return <div>No se encontró el cómic.</div>;
   }
 
   return (

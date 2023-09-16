@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
 import { Link } from "react-router-dom";
@@ -44,6 +44,65 @@ function ComicList() {
   return (
     <div>
         <ComicSearch/>
+      <h1>Comic List</h1>
+      {comics.map((comic) => (
+        <div key={comic.id}>
+          <h2>{comic.title}</h2>
+          <Link to={`/comics/${comic.id}`}>
+            <img
+              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+              alt={comic.title}
+            />
+          </Link>
+          <p>{comic.description}</p>
+        </div>
+      ))}
+      <div>
+        <button onClick={prevPage} disabled={currentPage === 1}>
+          Previous Page
+        </button>
+        <span>Page {currentPage}</span>
+        <button onClick={nextPage}>Next Page</button>
+      </div>
+    </div>
+  );
+}
+
+export default ComicList;*/
+
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchComics } from "../redux/actions/comicActions";
+
+function ComicList() {
+  const comics = useSelector((state) => state.comic.comics);
+  const currentPage = useSelector((state) => state.comic.currentPage);
+  const loading = useSelector((state) => state.comic.loading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchComics(currentPage));
+  }, [currentPage, dispatch]);
+
+  const nextPage = () => {
+    dispatch({
+      type: "NEXT_PAGE",
+    });
+  };
+
+  const prevPage = () => {
+    dispatch({
+      type: "PREV_PAGE",
+    });
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
       <h1>Comic List</h1>
       {comics.map((comic) => (
         <div key={comic.id}>
