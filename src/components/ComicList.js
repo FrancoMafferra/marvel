@@ -43,8 +43,8 @@ function ComicList() {
 
   return (
     <div>
-        <ComicSearch/>
       <h1>Comic List</h1>
+        <ComicSearch/>
       {comics.map((comic) => (
         <div key={comic.id}>
           <h2>{comic.title}</h2>

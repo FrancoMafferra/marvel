@@ -30,7 +30,6 @@ function ComicSearch() {
 
   return (
     <div>
-      <h1>Comic Search</h1>
       <input
         type="text"
         placeholder="Search comics..."
