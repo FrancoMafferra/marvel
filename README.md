@@ -63,4 +63,4 @@ La aplicación utiliza la API de Marvel para obtener los datos de los cómics. S
 ## Consideraciones adicionales
 - Asegúrate de tener una conexión a Internet activa para poder obtener los datos de los cómics desde la API de Marvel.
 - La paginación de la lista de cómics se realiza de a [5] cómics por página.
-- La búsqueda de cómics se realiza a partir de [1] caracteres ingresados en el campo de búsqueda.
+- La búsqueda de cómics se realiza a partir de [3] caracteres ingresados en el campo de búsqueda.

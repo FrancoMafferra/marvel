@@ -1,4 +1,4 @@
-/*import React, { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
 import { Link } from "react-router-dom";
@@ -50,12 +50,20 @@ function ComicSearch() {
   );
 }
 
-export default ComicSearch;*/
+export default ComicSearch;
+
+
+
+
+
+
+/* CON REDUX
 
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchComics } from "../redux/actions/comicActions";
+import "./ComicSearch.css"
 
 function ComicSearch() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -72,7 +80,6 @@ function ComicSearch() {
 
   return (
     <div>
-      <h1>Comic Search</h1>
       <input
         type="text"
         placeholder="Search comics..."
@@ -92,4 +99,4 @@ function ComicSearch() {
   );
 }
 
-export default ComicSearch;
+export default ComicSearch;*/

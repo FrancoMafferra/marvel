@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import comicReducer from "./comicReducer";
+import comicReducer from "./reducers/comicReducer";
 
 const rootReducer = combineReducers({
 comic: comicReducer,

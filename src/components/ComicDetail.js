@@ -1,4 +1,4 @@
-/*import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
 import { useParams, Link } from "react-router-dom";
@@ -48,8 +48,25 @@ function ComicDetail() {
   );
 }
 
-export default ComicDetail;*/
+export default ComicDetail;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CON REDUX
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
@@ -92,4 +109,4 @@ function ComicDetail() {
   );
 }
 
-export default ComicDetail;
+export default ComicDetail;*/
