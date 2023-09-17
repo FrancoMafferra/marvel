@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import md5 from "crypto-js/md5";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"; 
 
 const publicKey = "c352f162878d0cc68c68e12e57d22ac0";
 const privateKey = "9a850fe5e1d3911eb1c1cd3f4064d3216546c3fe";
-const comicsPerPage = 5;
 
 function ComicSearch() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,17 +29,18 @@ function ComicSearch() {
   };
 
   return (
-    <div>
+    <div className="my-3">
       <input
         type="text"
+        className="form-control"
         placeholder="Search comics..."
         value={searchTerm}
         onChange={handleSearch}
       />
       {searchResults.length > 0 && (
-        <ul>
+        <ul className="list-group mt-2">
           {searchResults.map((comic) => (
-            <li key={comic.id}>
+            <li key={comic.id} className="list-group-item">
               <Link to={`/comics/${comic.id}`}>{comic.title}</Link>
             </li>
           ))}
@@ -50,11 +51,6 @@ function ComicSearch() {
 }
 
 export default ComicSearch;
-
-
-
-
-
 
 /* CON REDUX
 

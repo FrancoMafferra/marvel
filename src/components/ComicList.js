@@ -3,10 +3,12 @@ import axios from "axios";
 import md5 from "crypto-js/md5";
 import { Link } from "react-router-dom";
 import ComicSearch from "./ComicSearch";
+import "./ComicList.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const publicKey = "c352f162878d0cc68c68e12e57d22ac0";
 const privateKey = "9a850fe5e1d3911eb1c1cd3f4064d3216546c3fe";
-const comicsPerPage = 5;
+const comicsPerPage = 10;
 
 function ComicList() {
   const [comics, setComics] = useState([]);
@@ -44,39 +46,39 @@ function ComicList() {
   return (
     <div>
       <h1>Comic List</h1>
-        <ComicSearch/>
-      {comics.map((comic) => (
-        <div key={comic.id}>
-          <h2>{comic.title}</h2>
-          <Link to={`/comics/${comic.id}`}>
-            <img
-              src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-              alt={comic.title}
-            />
-          </Link>
-          <p>{comic.description}</p>
-        </div>
-      ))}
-      <div>
-        <button onClick={prevPage} disabled={currentPage === 1}>
+      <ComicSearch />
+      <div className="container">
+        {comics.map((comic) => (
+          <div key={comic.id}>
+            <h2>{comic.title}</h2>
+            <Link to={`/comics/${comic.id}`}>
+              <img
+                src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                alt={comic.title}
+              />
+            </Link>
+            <p>{comic.description}</p>
+          </div>
+        ))}
+      </div>
+      <div className="btns-list">
+        <button
+          className="btn btn-primary"
+          onClick={prevPage}
+          disabled={currentPage === 1}
+        >
           Previous Page
         </button>
         <span>Page {currentPage}</span>
-        <button onClick={nextPage}>Next Page</button>
+        <button className="btn btn-primary" onClick={nextPage}>
+          Next Page
+        </button>
       </div>
     </div>
   );
 }
 
 export default ComicList;
-
-
-
-
-
-
-
-
 /* CON REDUX
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
